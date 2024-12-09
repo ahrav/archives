@@ -60,7 +60,7 @@ func (r Rar) Match(_ context.Context, filename string, stream io.Reader) (MatchR
 // Archive is not implemented for RAR because it is patent-encumbered.
 
 func (r Rar) Extract(ctx context.Context, sourceArchive io.Reader, handleFile FileHandler) error {
-	options := []rardecode.Option{rardecode.BufferSize(32 * 1024)}
+	options := []rardecode.Option{rardecode.BufferSize(64 * 1024)}
 	if r.Password != "" {
 		options = append(options, rardecode.Password(r.Password))
 	}
